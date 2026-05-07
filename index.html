@@ -3,31 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD FAHAD MIA</title>
+    <title>IP Location Tracker</title>
     <style>
-        body { background-color: #000; color: #D4AF37; font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .container { max-width: 500px; margin: 40px auto; border: 1px solid #222; padding: 30px; border-radius: 20px; background: #0a0a0a; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
-        .profile-pic { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #D4AF37; object-fit: cover; margin-bottom: 20px; }
-        h1 { margin: 10px 0; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
-        .links { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
-        .btn { text-decoration: none; color: #000; background: #D4AF37; padding: 14px; border-radius: 8px; font-weight: bold; transition: 0.3s; }
-        .btn:hover { background: #b8952d; transform: scale(1.02); }
-        .whatsapp { background: #25D366; color: #fff; }
-        .whatsapp:hover { background: #1ebd57; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #eef2f3; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); text-align: center; width: 400px; }
+        h1 { color: #333; font-size: 24px; }
+        .price-tag { color: #d9534f; font-weight: bold; margin-bottom: 20px; }
+        input { width: 80%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 15px; outline: none; }
+        button { width: 87%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        button:disabled { background-color: #ccc; }
+        #result { display: none; margin-top: 25px; text-align: left; padding: 15px; background: #f9f9f9; border-radius: 10px; border-left: 5px solid #28a745; }
+        .map-btn { display: block; text-align: center; margin-top: 15px; padding: 10px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="1000115071.png" alt="MD FAHAD MIA" class="profile-pic">
-        
-        <h1>MD FAHAD MIA</h1>
-        
-        <div class="links">
-            <a href="tel:01941063121" class="btn">📞 01941063121</a>
-            <a href="https://wa.me/8801941063121" class="btn whatsapp">💬 WhatsApp</a>
-            <a href="https://www.facebook.com/fahad.mia510" class="btn">🔵 Facebook</a>
-            <a href="https://www.instagram.com/fahad.mia510/" class="btn">📸 Instagram</a>
-        </div>
+
+<div class="container">
+    <h1>IP লোকেশন ট্র্যাকার</h1>
+    <p class="price-tag">প্রতি ট্র্যাকিং চার্জ: ৫ টাকা</p>
+    
+    <input type="text" id="ipInput" placeholder="IP দিন (যেমন: 103.145.116.20)">
+    <button id="trackBtn" onclick="trackIP()">ট্র্যাক করুন</button>
+
+    <div id="result">
+        <p><strong>আইপি:</strong> <span id="resIp"></span></p>
+        <p><strong>শহর:</strong> <span id="resCity"></span></p>
+        <p><strong>দেশ:</strong> <span id="resCountry"></span></p>
+        <p><strong>আইএসপি:</strong> <span id="resOrg"></span></p>
+        <a id="mapLink" class="map-btn" target="_blank">গুগল ম্যাপে দেখুন</a>
     </div>
+</div>
+
+<script>
+async function trackIP() {
+    const ipInput = document.getElementById('ipInput').value.trim();
+    const resultDiv = document.getElementById('result');
+    const btn = document.getElementById('trackBtn');
+
+    if (!ipInput) {
+        alert("দয়া করে একটি সঠিক আইপি অ্যাড্রেস দিন!");
+        return;
+    }
+
+    btn.innerText = "খোঁজা হচ্ছে...";
+    btn.disabled = true;
+    resultDiv.style.display = 'none';
+
+    try {
+        // 'ip-api.com' ব্যবহার করছি যা কোনো এরর ছাড়াই রেজাল্ট দেবে
+        const response = await fetch(`http://ip-api.com/json/${ipInput}`);
+        const data = await response.json();
+
+        if (data.status === "fail") {
+            alert("ভুল আইপি: " + data.message);
+        } else {
+            document.getElementById('resIp').innerText = data.query;
+            document.getElementById('resCity').innerText = data.city || 'তথ্য পাওয়া যায়নি';
+            document.getElementById('resCountry').innerText = data.country || 'তথ্য পাওয়া যায়নি';
+            document.getElementById('resOrg').innerText = data.isp || 'তথ্য পাওয়া যায়নি';
+            
+            const mapUrl = `https://www.google.com/maps?q=${data.lat},${data.lon}`;
+            document.getElementById('mapLink').href = mapUrl;
+            
+            resultDiv.style.display = 'block';
+        }
+    } catch (error) {
+        // যদি ব্রাউজার http ব্লক করে, তবে এই ব্যাকআপ API কাজ করবে
+        try {
+            const backupRes = await fetch(`https://ipapi.co/${ipInput}/json/`);
+            const backupData = await backupRes.json();
+            
+            if(backupData.error) throw new Error();
+
+            document.getElementById('resIp').innerText = backupData.ip;
+            document.getElementById('resCity').innerText = backupData.city;
+            document.getElementById('resCountry').innerText = backupData.country_name;
+            document.getElementById('resOrg').innerText = backupData.org;
+            
+            const mapUrl = `https://www.google.com/maps?q=${backupData.latitude},${backupData.longitude}`;
+            document.getElementById('mapLink').href = mapUrl;
+            resultDiv.style.display = 'block';
+        } catch(e) {
+            alert("সার্ভারে সমস্যা হচ্ছে অথবা ব্রাউজার রিকোয়েস্ট ব্লক করছে। অনুগ্রহ করে লাইভ সার্ভারে ট্রাই করুন।");
+        }
+    } finally {
+        btn.innerText = "ট্র্যাক করুন";
+        btn.disabled = false;
+    }
+}
+</script>
+
 </body>
 </html>
