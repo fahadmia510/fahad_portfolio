@@ -3,226 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD FAHAD MIA | Official Portfolio</title>
+    <title>MD FAHAD MIA</title>
     <style>
-        :root {
-            --gold: #D4AF37;
-            --dark-bg: #050505;
-            --card-bg: #111111;
-            --text-color: #ffffff;
-            --accent-gray: #b0b0b0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Hero Section */
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, #1a1a1a 0%, #050505 100%);
-            border-radius: 20px;
-            border: 1px solid #222;
-            margin-bottom: 40px;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: var(--gold);
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .tagline {
-            color: var(--accent-gray);
-            font-size: 1rem;
-            margin-bottom: 25px;
-        }
-
-        /* Social Buttons */
-        .social-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .btn {
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            transition: 0.3s;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-        }
-
-        .btn:hover {
-            background-color: var(--gold);
-            color: #000;
-        }
-
-        .wa-btn {
-            background-color: #25D366;
-            border-color: #25D366;
-            color: #fff;
-        }
-
-        .wa-btn:hover {
-            background-color: #128C7E;
-            border-color: #128C7E;
-            color: #fff;
-        }
-
-        /* Content Sections */
-        .section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            color: var(--gold);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid #222;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #222;
-            padding-bottom: 8px;
-        }
-
-        .info-list li span:first-child {
-            color: var(--accent-gray);
-        }
-
-        .info-list li span:last-child {
-            color: var(--gold);
-            font-weight: bold;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .grid-item {
-            background: #151515;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #222;
-        }
-
-        .grid-item h3 {
-            color: var(--gold);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        footer {
-            text-align: center;
-            padding-top: 20px;
-            color: #444;
-            font-size: 0.8rem;
-            border-top: 1px solid #222;
-        }
+        body { background-color: #000; color: #D4AF37; font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .container { max-width: 500px; margin: 40px auto; border: 1px solid #222; padding: 30px; border-radius: 20px; background: #0a0a0a; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
+        .profile-pic { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #D4AF37; object-fit: cover; margin-bottom: 20px; }
+        h1 { margin: 10px 0; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
+        .links { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+        .btn { text-decoration: none; color: #000; background: #D4AF37; padding: 14px; border-radius: 8px; font-weight: bold; transition: 0.3s; }
+        .btn:hover { background: #b8952d; transform: scale(1.02); }
+        .whatsapp { background: #25D366; color: #fff; }
+        .whatsapp:hover { background: #1ebd57; }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <!-- Photo input by user: 1000115071.png -->
-        <img src="1000115071.png" alt="MD FAHAD MIA" class="profile-img">
-        <h1>MD FAHAD MIA</h1>
-        <p class="tagline">Digital Content Creator | Crypto Developer | Forex Analyst</p>
+    <div class="container">
+        <img src="1000115071.png" alt="MD FAHAD MIA" class="profile-pic">
         
-        <div class="social-container">
-            <a href="https://wa.me/8801941063121" class="btn wa-btn" target="_blank">WhatsApp</a>
-            <a href="https://www.facebook.com/fahad.mia510" class="btn" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/fahad.mia510/" class="btn" target="_blank">Instagram</a>
+        <h1>MD FAHAD MIA</h1>
+        
+        <div class="links">
+            <a href="tel:01941063121" class="btn">📞 01941063121</a>
+            <a href="https://wa.me/8801941063121" class="btn whatsapp">💬 WhatsApp</a>
+            <a href="https://www.facebook.com/fahad.mia510" class="btn">🔵 Facebook</a>
+            <a href="https://www.instagram.com/fahad.mia510/" class="btn">📸 Instagram</a>
         </div>
-    </header>
-
-    <section class="section">
-        <h2>About Me</h2>
-        <div class="card">
-            <p style="margin-bottom: 20px;">আমি মো: ফাহাদ মিয়া। প্রযুক্তি এবং ডিজিটাল আর্ট নিয়ে কাজ করতে আমি ভালোবাসি। ইউটিউবার হিসেবে আমি 'Crystal Knowledge Hub' চ্যানেলের মাধ্যমে আমার দক্ষতা শেয়ার করি। আমি বর্তমানে ক্রিপ্টো প্রজেক্ট এবং ফরেক্স মার্কেট নিয়ে গভীরভাবে কাজ করছি।</p>
-            <ul class="info-list">
-                <li><span>Phone</span> <span>01941063121</span></li>
-                <li><span>Height</span> <span>5' 9"</span></li>
-                <li><span>Device</span> <span>Samsung S22 Ultra</span></li>
-                <li><span>Education</span> <span>SSC Graduate</span></li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>My Passion & Interests</h2>
-        <div class="grid">
-            <div class="grid-item">
-                <h3>Technology</h3>
-                <p>Digital Art & 2D Animation</p>
-            </div>
-            <div class="grid-item">
-                <h3>Trading</h3>
-                <p>Forex (EUR/USD) & Crypto</p>
-            </div>
-            <div class="grid-item">
-                <h3>Mathematics</h3>
-                <p>Advanced Determinants & Trigonometry</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        &copy; 2026 MD FAHAD MIA. All Rights Reserved.
-    </footer>
-</div>
-
+    </div>
 </body>
 </html>
